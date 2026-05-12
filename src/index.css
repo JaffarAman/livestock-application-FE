@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  /* SaaS Soft Light Green Palette */
+  --color-primary: #16a34a; /* Green 600 */
+  --color-primary-container: #dcfce7; /* Green 100 */
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #14532d; /* Green 900 */
+  
+  --color-secondary: #0ea5e9; /* Sky 500 */
+  --color-secondary-container: #e0f2fe; /* Sky 100 */
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #0c4a6e; /* Sky 900 */
+
+  --color-tertiary: #f59e0b; /* Amber 500 */
+  --color-tertiary-container: #fef3c7; /* Amber 100 */
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #78350f; /* Amber 900 */
+
+  --color-error: #ef4444; /* Red 500 */
+  --color-error-container: #fee2e2; /* Red 100 */
+  --color-on-error: #ffffff;
+  --color-on-error-container: #7f1d1d; /* Red 900 */
+
+  --color-background: #f8fafc; /* Slate 50 */
+  --color-on-background: #0f172a; /* Slate 900 */
+  
+  --color-surface: #ffffff;
+  --color-on-surface: #1e293b; /* Slate 800 */
+  --color-on-surface-variant: #64748b; /* Slate 500 */
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f5f9; /* Slate 100 */
+  --color-surface-container: #e2e8f0; /* Slate 200 */
+  --color-surface-container-high: #cbd5e1; /* Slate 300 */
+  --color-surface-container-highest: #94a3b8; /* Slate 400 */
+
+  --color-outline: #cbd5e1; /* Slate 300 */
+  --color-outline-variant: #e2e8f0; /* Slate 200 */
+
+  /* Standardized Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  --font-headline: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    @media (max-width: 640px) {
+      font-size: 14px;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    @apply text-sm leading-relaxed;
+  }
+
+  h1 {
+    @apply font-headline font-semibold text-xl md:text-2xl tracking-tight text-on-surface;
+  }
+
+  h2 {
+    @apply font-headline font-semibold text-lg md:text-xl tracking-tight text-on-surface;
+  }
+
+  h3 {
+    @apply font-headline font-semibold text-base md:text-lg tracking-tight text-on-surface;
+  }
+
+  h4 {
+    @apply font-headline font-semibold text-sm md:text-base tracking-tight text-on-surface;
+  }
+
+  p {
+    @apply text-on-surface-variant leading-relaxed;
+  }
+
+  /* Custom scrollbar for a professional look */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-surface-container-high);
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-surface-container-highest);
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+ 
+  .animate-slideUp {
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+ 
+  .animate-slideLeft {
+    animation: slideLeft 0.3s ease-out forwards;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-outline-variant/40 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .stat-card {
+    @apply bg-white p-5 md:p-6 rounded-2xl border border-outline-variant/30 hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-primary/5;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
